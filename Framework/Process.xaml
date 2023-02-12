@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
-  <mva:VisualBasic.Settings>
+  <VisualBasic.Settings>
     <x:Null />
-  </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,2095</sap:VirtualizedContainerService.HintSize>
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1234,2316</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="70">
@@ -45,6 +45,8 @@
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -84,10 +86,20 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Check ZSE for outages." DisplayName="Process" sap:VirtualizedContainerService.HintSize="526,1990" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Check ZSE for outages." DisplayName="Process" sap:VirtualizedContainerService.HintSize="540,2251" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strResult" />
     </Sequence.Variables>
@@ -97,20 +109,20 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Edge: Odstávky a poruchy - Západoslovenská distribučná, a. s." sap:VirtualizedContainerService.HintSize="484,1305" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="0b64683d-835c-48ac-9f01-73ae0ed8add7" Version="V1">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="478,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Edge: Odstávky a poruchy - Západoslovenská distribučná, a. s." sap:VirtualizedContainerService.HintSize="478,1385" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="0b64683d-835c-48ac-9f01-73ae0ed8add7" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1089" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,1168" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Obec'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="0b64683d-835c-48ac-9f01-73ae0ed8add7" Text="[in_Config(&quot;NameCity&quot;).ToString + &quot;[k(down)][k(enter)]&quot;]" Version="V1">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Obec'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="0b64683d-835c-48ac-9f01-73ae0ed8add7" Text="[in_Config(&quot;NameCity&quot;).ToString + &quot;[k(down)][k(enter)]&quot;]" Version="V1">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://www.zsdis.sk/Uvod/Online-sluzby/Odstavky-a-poruchy" DesignTimeRectangle="465, 513, 360, 46" ElementType="InputBox" FriendlyName="'INPUT outagesFM_city'" FullSelectorArgument="&lt;webctrl id='outagesFM_city' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='outagesFM_city' tag='INPUT' type='text' class='textbox_big ui-autocomplete-input' aaname='Obec:' /&gt;" Guid="b55ffffe-7aa7-43ef-96d0-9c8e9324bd02" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAWwAAAAyCAYAAAB4bOGKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADYSURBVHhe7dSxCcAwEMDA7L+cR3IqG1Kkf8EdaAU9G4AEwwaIuMNea0mSBnZ8hg3ALIYNEGHYABGGDRBh2AARhg0QYdgAEYYNEGHYABGGDRBh2AARhg0QYdgAEYYNEGHYABGGDRBh2AARhg0QYdgAEYYNEGHYABGGDRBh2AARhg0QYdgAEYYNEGHYABGGDRBh2AARhg0QYdgAEYYNEGHYABGGDRBh2AARhg0QYdgAEYYNEGHYABGGDRBh2AARhg0QYdgAEYYNEPE7bEnSvI47bABmM2yAhL1f+AuNmLh4LzcAAAAASUVORK5CYII=" InformativeScreenshot="47b6b7131137d5cc1d4c0d47e1afe174.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Odstávky a poruchy - Západoslovenská distribučná, a. s.' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -121,7 +133,7 @@
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Ulica'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="0b64683d-835c-48ac-9f01-73ae0ed8add7" Text="[in_Config(&quot;NameStreet&quot;).ToString  + &quot;[k(down)][k(enter)]&quot;]" Version="V1">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Ulica'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="0b64683d-835c-48ac-9f01-73ae0ed8add7" Text="[in_Config(&quot;NameStreet&quot;).ToString  + &quot;[k(down)][k(enter)]&quot;]" Version="V1">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://www.zsdis.sk/Uvod/Online-sluzby/Odstavky-a-poruchy" DesignTimeRectangle="864, 513, 205, 46" ElementType="InputBox" FriendlyName="'INPUT outagesFM_street'" FullSelectorArgument="&lt;webctrl id='outagesFM_street' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='outagesFM_street' tag='INPUT' type='text' class='textbox_big ui-autocomplete-input' aaname='Ulica:' /&gt;" Guid="486a7149-f25d-46d4-9e4d-4b8b7ff1a5fd" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAANEAAAAyCAYAAADC6j7DAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACtSURBVHhe7dOxCYAwAABB918uI8UqAQsh+u0d/Ah/TSAxEUR7ojGGpA8tj4mAMyaCyEQQmQgiE0FkIohMBJGJIDIRRCaCyEQQmQgiE0FkIohMBJGJIDIRRCaCyEQQmQgiE0FkIohMBJGJIDIRRCaCyEQQmQgiE0FkIohMBJGJIDIRRCaCyEQQmQgiE0FkIohMBJGJIDIRRCaCyEQQmQii14kknbfsiYB/TATJnDfgPJYI7ASKqgAAAABJRU5ErkJggg==" InformativeScreenshot="66141a85cf49d76e3ebb7539e2f2e9da.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Odstávky a poruchy - Západoslovenská distribučná, a. s.' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -132,12 +144,12 @@
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <uix:NClick ClickType="Single" DisplayName="Click 'Vyhľadať'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0b64683d-835c-48ac-9f01-73ae0ed8add7" Version="V1">
+            <uix:NClick ClickType="Single" DisplayName="Click 'Vyhľadať'" sap:VirtualizedContainerService.HintSize="338,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0b64683d-835c-48ac-9f01-73ae0ed8add7" Version="V1">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://www.zsdis.sk/Uvod/Online-sluzby/Odstavky-a-poruchy" DesignTimeRectangle="465, 699, 114, 47" ElementType="Button" FriendlyName="'Vyhľadať'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' class='button' aaname='Vyhľadať' check:text='Vyhľadať' /&gt;" Guid="65dfb7fa-0e09-401c-9ca7-3393b8eea836" ImageBase64="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" InformativeScreenshot="d29763294d63dd5489db4aa3394d98d1.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Odstávky a poruchy - Západoslovenská distribučná, a. s.' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NGetText DisplayName="Get Text 'Situácia'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="0b64683d-835c-48ac-9f01-73ae0ed8add7" Version="V1">
+            <uix:NGetText DisplayName="Get Text 'Situácia'" sap:VirtualizedContainerService.HintSize="338,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="0b64683d-835c-48ac-9f01-73ae0ed8add7" Version="V1">
               <uix:NGetText.Target>
                 <uix:TargetAnchorable BrowserURL="https://www.zsdis.sk/Uvod/Online-sluzby/Odstavky-a-poruchy?__boxId=c9649&amp;__mvcevent=outagesList&amp;outagesFMSaved=1" DesignTimeRectangle="724, 767, 708, 70" FriendlyName="'Na tejto'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='6' parentid='outages-and-failures' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='result-text' parentid='outages-and-failures' tag='DIV' /&gt;" Guid="f38adfa7-a1b0-4ab1-bc92-ab92ef7214ab" InformativeScreenshot="a53f59d354e4e9d2557781658f003623.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Odstávky a poruchy - Západoslovenská distribučná, a. s.' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -151,23 +163,23 @@
                 <OutArgument x:TypeArguments="x:String">[strResult]</OutArgument>
               </uix:NGetText.Text>
             </uix:NGetText>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[strResult]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,143" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[strResult]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Edge" IconBase64="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" InformativeScreenshot="27f8de67fa3c2554d43392f2e0be532e.png" Selector="&lt;html app='msedge.exe' title='Odstávky a poruchy - Západoslovenská distribučná, a. s.' /&gt;" Url="https://www.zsdis.sk/Uvod/Online-sluzby/Odstavky-a-poruchy" />
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Edge" IconBase64="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" InformativeScreenshot="27f8de67fa3c2554d43392f2e0be532e.png" Selector="&lt;html app='msedge.exe' title='Odstávky a poruchy - Západoslovenská distribučná, a. s.' /&gt;" Url="[in_Config(&quot;UrlZSE&quot;).ToString]" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <If Condition="[not strResult = &quot;Na vybranej ulici neevidujeme žiadnu poruchu ani plánovanú odstávku.&quot;]" DisplayName="If outages planned" sap:VirtualizedContainerService.HintSize="484,391" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[not strResult = &quot;Na vybranej ulici neevidujeme žiadnu poruchu ani plánovanú odstávku.&quot;]" DisplayName="If outages planned" sap:VirtualizedContainerService.HintSize="478,503" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,204" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="400,224" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File SendMail" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Source\SendMail.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File SendMail" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Source\SendMail.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_AddressTo">pucovsky.martin@gmail.com</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_Subject">ZSE_Check_Outages</InArgument>
@@ -177,7 +189,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap:VirtualizedContainerService.HintSize="400,103" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
